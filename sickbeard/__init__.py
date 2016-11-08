@@ -38,7 +38,7 @@ from providers import ezrss, eztv, tvtorrents, torrentleech, btn, newznab, wombl
 
 from providers import kickass, torrentz, thepiratebay, torrentday
 from providers import sceneaccess, iptorrents, bithdtv, btdigg, torrentshack
-from providers import speed, revolutiontt
+from providers import speed, revolutiontt, torrenting
 
 from sickbeard.config import CheckSection, check_setting_int, check_setting_str, ConfigMigrator
 
@@ -214,6 +214,10 @@ IPTORRENTS_PASSWORD = None
 IPTORRENTS_UID = None
 IPTORRENTS_RSSHASH = None
 IPTORRENTS_EU = None
+
+TORRENTING = False
+TORRENTING_USER = None
+TORRENTING_PASSKEY = None
 
 BITHDTV = False
 BITHDTV_USERNAME = None
@@ -438,6 +442,7 @@ def initialize(consoleLogging=True):
                 TORRENTDAY, TORRENTDAY_PHPSESSID, TORRENTDAY_UID, TORRENTDAY_PASS, \
                 SCENEACCESS, SCENEACCESS_USERNAME, SCENEACCESS_PASSWORD, SCENEACCESS_RSSHASH, \
                 IPTORRENTS, IPTORRENTS_USERNAME, IPTORRENTS_PASSWORD, IPTORRENTS_UID, IPTORRENTS_RSSHASH, IPTORRENTS_EU, \
+                TORRENTING, TORRENTING_USER, TORRENTING_PASSKEY, \
                 BITHDTV, BITHDTV_USERNAME, BITHDTV_PASSWORD, \
                 TORRENTSHACK, TORRENTSHACK_USERNAME, TORRENTSHACK_PASSWORD, TORRENTSHACK_UID, TORRENTSHACK_AUTH, TORRENTSHACK_PASS_KEY ,TORRENTSHACK_AUTH_KEY, \
                 SPEED, SPEED_USERNAME, SPEED_PASSWORD, SPEED_RSSHASH, \
@@ -639,6 +644,10 @@ def initialize(consoleLogging=True):
         IPTORRENTS_UID = check_setting_str(CFG, 'IPTORRENTS', 'iptorrents_uid', '')
         IPTORRENTS_RSSHASH = check_setting_str(CFG, 'IPTORRENTS', 'iptorrents_rsshash', '')
         IPTORRENTS_EU = bool(check_setting_int(CFG, 'IPTORRENTS', 'iptorrents_eu', 0))
+        
+        TORRENTING = bool(check_setting_int(CFG, 'TORRENTING', 'torrenting', 0))
+        TORRENTING_USER = check_setting_str(CFG, 'TORRENTING', 'torrenting_user', '')
+        TORRENTING_PASSKEY = check_setting_str(CFG, 'TORRENTING', 'torrenting_passkey', '')
         
         BITHDTV = bool(check_setting_int(CFG, 'BITHDTV', 'bithdtv', 0))
         BITHDTV_USERNAME = check_setting_str(CFG, 'BITHDTV', 'bithdtv_username', '')
@@ -1316,6 +1325,11 @@ def save_config():
     new_config['IPTORRENTS']['iptorrents_uid'] = IPTORRENTS_UID
     new_config['IPTORRENTS']['iptorrents_rsshash'] = IPTORRENTS_RSSHASH
     new_config['IPTORRENTS']['iptorrents_eu'] = IPTORRENTS_EU
+    
+    new_config['TORRENTING'] = {}
+    new_config['TORRENTING']['torrenting'] = int(TORRENTING)
+    new_config['TORRENTING']['torrenting_user'] = TORRENTING_USER
+    new_config['TORRENTING']['torrenting_passkey'] = TORRENTING_PASSKEY
     
     new_config['BITHDTV'] = {}
     new_config['BITHDTV']['bithdtv'] = int(BITHDTV)

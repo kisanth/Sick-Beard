@@ -1062,6 +1062,7 @@ class ConfigProviders:
                       speed_username = None, speed_password = None, speed_rsshash = None,
                       revolutiontt_username = None, revolutiontt_password = None, 
                       kickass_alt_url = None,
+                      torrenting_user = None, torrenting_passkey = None,
                       provider_order=None):
 
         results = []
@@ -1141,6 +1142,8 @@ class ConfigProviders:
                 sickbeard.SCENEACCESS = curEnabled
             elif curProvider == 'iptorrents':
                 sickbeard.IPTORRENTS = curEnabled
+            elif curProvider == 'torrenting':
+                sickbeard.TORRENTING = curEnabled
             elif curProvider == 'bithdtv':
                 sickbeard.BITHDTV = curEnabled
             elif curProvider == 'btdigg':
@@ -1208,6 +1211,9 @@ class ConfigProviders:
         sickbeard.IPTORRENTS_UID = iptorrents_uid.strip()
         sickbeard.IPTORRENTS_RSSHASH = iptorrents_rsshash.strip()
         sickbeard.IPTORRENTS_EU = 1 if iptorrents_eu == 'on' else 0
+
+        sickbeard.TORRENTING_USER = torrenting_user.strip()
+        sickbeard.TORRENTING_PASSKEY = torrenting_passkey.strip()
         
         sickbeard.BITHDTV_USERNAME = bithdtv_username.strip()
         sickbeard.BITHDTV_PASSWORD = bithdtv_password.strip()
