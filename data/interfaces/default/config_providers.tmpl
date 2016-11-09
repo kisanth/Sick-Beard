@@ -88,7 +88,7 @@
                                 <span class="component-title jumbo">Configure Provider:</span>
                                 <span class="component-desc">
                                     #set $provider_config_list = []
-                                    #for $cur_provider in sorted(("btn", "hdbits", "omgwtfnzbs", "tvtorrents", "torrentleech", "thepiratebay", "torrentz", "torrentday", "sceneaccess", "iptorrents", "bithdtv", "torrentshack","speed","kickass","revolutiontt")):
+                                    #for $cur_provider in sorted(("btn", "hdbits", "omgwtfnzbs", "tvtorrents", "torrentleech", "thepiratebay", "torrentz", "torrentday", "sceneaccess", "iptorrents", "bithdtv", "torrentshack","speed","kickass","revolutiontt", "torrenting")):
                                         #set $cur_provider_obj = $sickbeard.providers.getProviderClass($cur_provider)
                                         #if $cur_provider_obj.providerType == $GenericProvider.NZB and not $sickbeard.USE_NZBS:
                                             #continue
@@ -373,6 +373,21 @@
                             <span class="component-title"><i>Note: options with (*) are optional, this is generated from </i><a href="http://www.iptorrents.com/getrss.php" target="_blank">http://www.iptorrents.com/getrss.php</a></span>
                         </div>
                     </div><!-- /iptorrentsDiv //-->
+                    
+                    <div class="providerDiv" id="torrentingDiv">
+                        <div class="field-pair">
+                            <label class="clearfix">
+                                <span class="component-title">Username:</span>
+                                <input class="component-desc" type="text" name="torrenting_user" value="$sickbeard.TORRENTING_USER" size="40" />
+                            </label>
+                        </div>
+                        <div class="field-pair">
+                            <label class="clearfix">
+                                <span class="component-title">Passkey:</span>
+                                <input class="component-desc" type="text" name="torrenting_passkey" value="$sickbeard.TORRENTING_PASSKEY" size="40" />
+                            </label>
+                        </div>
+                    </div><!-- /torrentingDiv //-->
                     
                     <div class="providerDiv" id="torrentshackDiv">
                         <div class="field-pair">
