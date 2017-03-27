@@ -38,7 +38,7 @@ class TorrentingProvider(generic.TorrentProvider):
 
         generic.TorrentProvider.__init__(self, "Torrenting")
 
-        self.supportsBacklog = True
+        self.supportsBacklog = False
 
         self.cache = TorrentingCache(self)
 
